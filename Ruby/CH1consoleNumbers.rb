@@ -18,9 +18,5 @@ while keepGoing
 		puts 'Not correct. Please, try again'
 	end
 
-	if response == 'N'
-		keepGoing = false
-	else
-		keepGoing = true
-	end
+	response == 'N' ? keepGoing = false : keepGoing = true
 end
