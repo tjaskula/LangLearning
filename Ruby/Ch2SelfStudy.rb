@@ -47,13 +47,24 @@ class Tree
   attr_accessor :children, :node_name
 
   def initialize(name, children=[])
+    
+    if name.respond_to?('keys') then
+      root_node = name.first
+      name = root_node[0]
+      children = root_node[1]
+    end
+
+    if children.respond_to?('keys') then
+      children = children.map {|child_name, grandchildren| Tree.new(child_name, grandchildren) }
+    end
+
     @children = children
     @node_name = name
   end
 
   def visit_all(&block)
-    visit &block
-    children.each {|c| c.visit_all &block}
+    visit(&block)
+    children.each {|c| c.visit_all(&block)}
   end
 
   def visit(&block)
@@ -64,10 +75,7 @@ end
 ruby_tree = Tree.new({'grandpa' => { 'dad' => {'child 1' => {}, 'child 2' => {} }, 'uncle' => {'child 3' => {}, 'child 4' => {} }}})
 
 puts "Visiting a node"
-ruby_tree.visit {|node| puts node}
-
-p ruby_tree.children
-p ruby_tree.node_name
+ruby_tree.visit {|node| puts node.node_name}
 
 puts "Visiting entier tree"
-ruby_tree.visit_all {|node| puts node}
+ruby_tree.visit_all {|node| puts node.node_name}
