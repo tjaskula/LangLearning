@@ -23,3 +23,18 @@ exOr x y
     F   T   |       T
     F   F   |       F
 -}
+
+{-
+    3.3 Using literals on the left-hand side we can make the truth table for a function into its Haskell definition.
+    Complete the following definition of exOr in this style.
+
+    exOr True True  = ...
+    exOr True False = ...
+-}
+
+{-
+    exOr True True   = False
+    exOr True False  = True
+    exOr False True  = True
+    exOr False False = False
+-}
