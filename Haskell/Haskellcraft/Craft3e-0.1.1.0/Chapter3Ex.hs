@@ -56,3 +56,26 @@ exOr x y
 (||) :: Bool -> Bool -> Bool
 (||) True _     = True
 (||) False y    = y
+
+{-
+    3.5 Give two different definitions of the nAnd function
+
+    nAnd :: Bool -> Bool -> Bool
+
+    which returns the result True except when both its arguments are True. Give a diagram illustrating one of your
+    definitions.
+-}
+
+nAnd1 :: Bool -> Bool -> Bool
+nAnd1 True y    = True `exOr` y
+nAnd1 False _   = True
+
+nAnd2 :: Bool -> Bool -> Bool
+nAnd2 x y = not (x && y)
+
+{-
+    nAnd2 True True   = False
+    nAnd2 True False  = True
+    nAnd2 False True  = True
+    nAnd2 False False = True
+-}
