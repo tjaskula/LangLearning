@@ -1,4 +1,5 @@
 module Chapter3Ex where
+import Prelude hiding ((||), (&&))
 
 {-
     3.1 Give another version of the definition of 'exclusive or' which works informally like this:
@@ -38,3 +39,20 @@ exOr x y
     exOr False True  = True
     exOr False False = False
 -}
+
+{-
+    3.4 Give your own definition of the built-in && and ||. If you want to use the same operator for &&, say, you will
+    to make sure you hide its import. You can do this by adding it to the list of what is hidden, thus:
+
+    import Prelude hiding (max, (&&))
+
+    after the module declaration at the start of the Chapter3Ex module.
+-}
+
+(&&) :: Bool -> Bool -> Bool
+(&&) True y     = y
+(&&) False _    = False
+
+(||) :: Bool -> Bool -> Bool
+(||) True _     = True
+(||) False y    = y
