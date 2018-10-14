@@ -1,5 +1,6 @@
 module Chapter3Ex where
-import Prelude hiding ((||), (&&))
+import Prelude hiding (and, or, (||), (&&))
+import Test.QuickCheck
 
 {-
     3.1 Give another version of the definition of 'exclusive or' which works informally like this:
@@ -102,3 +103,54 @@ nAnd2 x y = not (x && y)
     nAnd2 False True  = True
     nAnd2 False False = True
 -}
+
+{-
+    3.7 Write QuickCheck properties to test the functions you have written in the earlier
+    exercices. You might be able to check one version of a function against another,
+    or perhaps think up different properties for your functions.
+-}
+
+-- Test exOrs
+exOr1 True  x = not x
+exOr1 False x = x
+
+prop_exOrs :: Bool -> Bool -> Bool
+
+prop_exOrs x y =
+    exOr x y == exOr1 x y
+
+prop_exOr2 :: Bool -> Bool -> Bool
+
+prop_exOr2 x y =
+    exOr x y == (x /= y)
+
+-- Test &&
+prop_And :: Bool -> Bool -> Bool
+
+and True True   = True
+and _ _         = False
+
+prop_And x y =
+    x && y == and x y
+
+-- Test ||
+prop_Or :: Bool -> Bool -> Bool
+
+or False y   = y
+or x False   = x
+or _ _       = True
+
+prop_Or x y =
+    x || y == or x y
+
+-- Test nAnd1
+prop_nAnd1 :: Bool -> Bool -> Bool
+
+prop_nAnd1 x y =
+    x `nAnd1` y == x `nAnd2` y
+
+-- Test nAnd2
+prop_nAnd2 :: Bool -> Bool -> Bool
+
+prop_nAnd2 x y =
+    x `nAnd2` y == x `nAnd1` y
