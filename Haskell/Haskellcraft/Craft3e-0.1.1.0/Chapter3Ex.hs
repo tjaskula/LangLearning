@@ -74,6 +74,29 @@ nAnd2 :: Bool -> Bool -> Bool
 nAnd2 x y = not (x && y)
 
 {-
+    x   y   |   x `nAnd1` y
+    -----------------------
+    T   T   |       F
+    T   F   |       T
+    F   T   |       T
+    F   F   |       T
+-}
+
+{-
+    3.6 Give line-by-line calculations of
+    
+    nAnd True True
+    nAnd True False
+    
+    for eadch of your definitions of nAnd in the previous exercice.
+-}
+
+{-
+    nAnd1 True True   = False
+    nAnd1 True False  = True
+    nAnd1 False True  = True
+    nAnd1 False False = True
+
     nAnd2 True True   = False
     nAnd2 True False  = True
     nAnd2 False True  = True
