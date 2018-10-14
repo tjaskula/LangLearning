@@ -10,3 +10,16 @@ exOr x y
     | x && not y = True
     | not x && y = True
     | otherwise = False
+
+{-
+    3.2 Give the 'box and line' diagram corresponding to your answer to the previous question
+-}
+
+{-
+    x   y   |   x `exOr` y
+    -----------------------
+    T   T   |       F
+    T   F   |       T
+    F   T   |       T
+    F   F   |       F
+-}
