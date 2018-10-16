@@ -154,3 +154,17 @@ prop_nAnd2 :: Bool -> Bool -> Bool
 
 prop_nAnd2 x y =
     x `nAnd2` y == x `nAnd1` y
+
+{-
+    3.8 Explain the effect of the function defined here:
+
+    mystery :: Integer -> Integer -> Integer -> Bool
+    mystery m n p = not ((m==n) && (n==p))
+-}
+
+mystery :: Integer -> Integer -> Integer -> Bool
+mystery m n p = not ((m==n) && (n==p))
+
+{-
+    A: returns false if all arguments are equal
+-}
