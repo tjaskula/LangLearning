@@ -168,3 +168,19 @@ mystery m n p = not ((m==n) && (n==p))
 {-
     A: returns false if all arguments are equal
 -}
+
+{-
+    3.9 Define a function
+
+    threeDifferent :: Integer -> Integer -> Integer -> Bool
+    so that the result of threeDifferent m n p is True if all three of numbers m, n and p are different.
+
+        What is your answer for ThreeDifferent 3 4 3? Explain why you get the answer that you do.
+-}
+
+threeDifferent :: Integer -> Integer -> Integer -> Bool
+threeDifferent m n p = (m /= n) && (m /= p) && (n /= p)
+
+{-
+    A: Compares each pair of parameters to find if they are different and returns True if this is the case.
+-}
