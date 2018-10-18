@@ -173,9 +173,10 @@ mystery m n p = not ((m==n) && (n==p))
     3.9 Define a function
 
     threeDifferent :: Integer -> Integer -> Integer -> Bool
+
     so that the result of threeDifferent m n p is True if all three of numbers m, n and p are different.
 
-        What is your answer for ThreeDifferent 3 4 3? Explain why you get the answer that you do.
+    What is your answer for ThreeDifferent 3 4 3? Explain why you get the answer that you do.
 -}
 
 threeDifferent :: Integer -> Integer -> Integer -> Bool
@@ -184,3 +185,23 @@ threeDifferent m n p = (m /= n) && (m /= p) && (n /= p)
 {-
     A: Compares each pair of parameters to find if they are different and returns True if this is the case.
 -}
+
+{-
+    3.10 This question is about the function
+
+    fourEqual :: Integer -> Integer -> Integer -> Integer -> Bool
+    
+    which returns the value True only if all four of its arguments are equal.
+
+    Give a definition of fourEqual modelled on the definition of threeEqual above.
+    Now give a definition of fourEqual which uses the function threeEqual in its definition. Compare your two answers.
+-}
+
+threeEqual :: Integer -> Integer -> Integer -> Bool
+threeEqual m n p = (m == n) && (n == p)
+
+fourEqual1 :: Integer -> Integer -> Integer -> Integer -> Bool
+fourEqual1 m n p o = (m == n) && (n == p) && (p == o)
+
+fourEqual2 :: Integer -> Integer -> Integer -> Integer -> Bool
+fourEqual2 m n p o = (threeEqual m n p) && (threeEqual n p o)
