@@ -205,3 +205,43 @@ fourEqual1 m n p o = (m == n) && (n == p) && (p == o)
 
 fourEqual2 :: Integer -> Integer -> Integer -> Integer -> Bool
 fourEqual2 m n p o = (threeEqual m n p) && (threeEqual n p o)
+
+{-
+    3.11 Give line-by-line calculations of
+
+    threeEqual (2 + 3) 5 (11 `div` 2)
+    mystery (2 + 4) 5 (11 `div` 2)
+    threeDifferent (2 + 4) 5 (11 `div` 2)
+    fourEqual (2 + 3) 5 (11 `div` 2) (21 `mod` 11)
+-}
+
+{-
+    A:
+
+    threeEqual: True
+    mystery: True
+    threeDifferent: False
+    fourEqual: False
+-}
+
+{-
+    3.12 Define QuickCheck tests for the functions that you have defined here.
+-}
+
+-- mystery
+prop_mystery :: Integer -> Integer -> Integer -> Bool
+
+prop_mystery m n p =
+    (mystery m n p) == not (threeEqual m n p)
+
+-- threeDifferent
+prop_threeDifferent :: Integer -> Integer -> Integer -> Bool
+
+prop_threeDifferent m n p =
+    (threeDifferent m n p) == (m /= n) && (n /= p) && (p /= m)
+
+-- fourEqual
+prop_fourEqual :: Integer -> Integer -> Integer -> Integer -> Bool
+
+prop_fourEqual m n p o =
+    (fourEqual1 m n p o) == (fourEqual2 o p n m)
