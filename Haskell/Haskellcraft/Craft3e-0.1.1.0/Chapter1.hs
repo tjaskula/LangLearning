@@ -6,7 +6,7 @@
 -- 
 --  Chapter 1
 -- 
---  The Pictures example code is given in the file Pitures.hs.
+--  The Pictures example code is given in the file Pictures.hs.
 --  This file can be used by importing it; more details are given in
 --  Chapter 2.
 -- 
